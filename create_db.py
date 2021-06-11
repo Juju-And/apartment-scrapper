@@ -8,7 +8,4 @@ def add_apartment(apartment):
     url VARCHAR (2048) UNIQUE NOT NULL
 );
 """
-# ad_number = metrics_dict["Numer ogłoszenia"]
-# created = metrics_dict["Data wprowadzenia"]
-# price = single_soup.find("span", class_="oglDetailsMoney").text
-# url = ap_URL
+

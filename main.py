@@ -1,6 +1,6 @@
 import datetime
 import locale
-import time
+import re
 
 import requests
 from bs4 import BeautifulSoup
@@ -42,8 +42,9 @@ def generate_single_apartment_data(ap_URL):
     converted_date = datetime.datetime.strptime(created, "%d %B %Y")
 
     price = single_soup.find("span", class_="oglDetailsMoney").text
+    price = re.sub("[^0-9]", "", price)
     url = ap_URL
-    # print(url)
+
     single_ap_dict.update(
         {"ad_number": ad_number, "created": converted_date, "price": price, "url": url}
     )
@@ -56,7 +57,7 @@ def generate_import_dict():
     for inx, ap_URL in enumerate(apartments_urls):
         single_dict = generate_single_apartment_data(ap_URL)
         out_dict.update({inx: single_dict})
-    print(out_dict)
+    return out_dict
 
 
 if __name__ == "__main__":
