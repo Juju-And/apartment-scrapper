@@ -4,7 +4,7 @@ from email.mime.text import MIMEText
 from passwords import sender_mail, password, recipient_mail
 
 
-def send_email(new_apartments):
+def send_email(new_apartments) -> None:
     body = "Siemka!\n\nPopatrz, ktoś przed chwilą dodał nowe mieszkanki:\n\n"
 
     for apartment in new_apartments:

@@ -13,7 +13,7 @@ soup = BeautifulSoup(page.content, "html.parser")
 scrapped_apartments = soup.find_all("div", class_="list__item__picture")
 
 
-def generate_apartments_urls():
+def generate_apartments_urls() -> list:
     urls = []
     for apartment in scrapped_apartments:
         link = apartment.find("a")["href"]
@@ -21,7 +21,7 @@ def generate_apartments_urls():
     return urls
 
 
-def generate_single_apartment_data(ap_URL):
+def generate_single_apartment_data(ap_URL) -> dict:
     single_ap_dict = {}
     single_page = requests.get(ap_URL)
     single_soup = BeautifulSoup(single_page.content, "html.parser")

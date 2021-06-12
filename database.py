@@ -1,7 +1,7 @@
 from psycopg2 import connect, OperationalError
 
 
-def create_db_context():
+def create_db_context() -> None:
     username = "postgres"
     passwd = "coderslab"
     hostname = "127.0.0.1"  # lub "localhost"
@@ -15,7 +15,7 @@ def create_db_context():
         return None
 
 
-def create_sql_insert_apartment(apartment):
+def create_sql_insert_apartment(apartment) -> str:
     SQL = """INSERT INTO apartments(ad_number, created, price, url) VALUES ('{}', '{}', {}, '{}')""".format(
         apartment["ad_number"],
         apartment["created"],
@@ -26,7 +26,7 @@ def create_sql_insert_apartment(apartment):
     return SQL
 
 
-def apartment_exists(db, number):
+def apartment_exists(db, number) -> bool:
     records = []
     if db:
         cursor = db.cursor()
@@ -38,7 +38,7 @@ def apartment_exists(db, number):
         return True
 
 
-def add_apartment(db, apartment):
+def add_apartment(db, apartment) -> None:
     if db:
         cursor = db.cursor()
         cursor.execute(create_sql_insert_apartment(apartment))
