@@ -2,3 +2,6 @@ venv
 .idea
 passwords.py
 __pycache__
+.env
+docker-compose.yml
+Dockerfile

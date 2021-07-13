@@ -1,7 +1,9 @@
 import smtplib
 from email.mime.text import MIMEText
 
-from passwords import sender_mail, password, recipient_mail
+from dotenv import dotenv_values
+
+config = dotenv_values(".env")
 
 
 def send_email(new_apartments) -> None:
@@ -17,8 +19,8 @@ def send_email(new_apartments) -> None:
 
     SUBJECT = "Uwaga nowe mieszkanki!!!"
     msg = body
-    TO = recipient_mail
-    FROM = sender_mail
+    TO = config['RECIPIENT_MAIL']
+    FROM = config['SENDER_MAIL']
 
     msg = MIMEText(msg)
     msg["Subject"] = SUBJECT
@@ -31,7 +33,7 @@ def send_email(new_apartments) -> None:
         smtpObj = smtplib.SMTP_SSL("smtp-mail.outlook.com", 465)
     smtpObj.ehlo()
     smtpObj.starttls()
-    smtpObj.login(FROM, password)
+    smtpObj.login(FROM, config['MAIL_PASSWORD'])
     smtpObj.sendmail(FROM, TO, msg.as_string())
     print("Email has been sent!")
     smtpObj.quit()

@@ -1,0 +1,5 @@
+{
+    "sender_mail":"sender@example.com",
+    "password": "XXXXXX",
+    "recipient_mail": "recipient@example.com"
+}

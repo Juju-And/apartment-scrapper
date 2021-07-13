@@ -1,0 +1,30 @@
+version: '3.7'
+services:
+  app:
+    build:
+      context: .
+    ports:
+      - "8000:8000"
+    command: sh -c "python main.py"
+    environment:
+      USERNAME=postgres
+      PASSWD=coderslab
+      HOSTNAME=postgres
+      DB_NAME=apartments
+      SENDER_MAIL=sender@example.com
+      MAIL_PASSWORD=xxxxx
+      RECIPIENT_MAIL=recipient@example.com
+  postgres:
+    image: postgres:10.5
+    restart: always
+    environment:
+      - POSTGRES_USER=postgres
+      - POSTGRES_PASSWORD=coderslab
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
+    ports:
+      - '5438:5432'
+    volumes:
+      - /postgres-data:/var/lib/postgresql/data
