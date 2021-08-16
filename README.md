@@ -39,6 +39,7 @@ url_max_floors = 6
 url_min_rooms = 3
 ```
 
+## Running locally
 
 With ready empty DB, and filled .env file you're ready to run and receive your first email notifications:
 ```
