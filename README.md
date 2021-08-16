@@ -11,7 +11,7 @@ These instructions will get you a copy of the project up and running on your loc
 Install all required modules running pip with the provided file:
 
 ```
-pip install -r requirements.txt
+$ pip install -r requirements.txt
 ```
 
 ### Installing
@@ -29,6 +29,9 @@ SENDER_MAIL=sender@example.com
 MAIL_PASSWORD=XXXXXX
 RECIPIENT_MAIL=recipient@example.com
 ```
+
+Now you can replace URL address with preffered criteria in `apartments_fetcher.py`
+
 
 With ready empty DB, and filled .env file you're ready to run and receive your first email notifications:
 ```
