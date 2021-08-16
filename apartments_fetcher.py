@@ -4,17 +4,25 @@ import re
 import requests
 from bs4 import BeautifulSoup
 
-# url to apartments in whole Gdansk
-url_price = 600000
-url_days = 3
-url_max_floors = 6
-url_min_rooms = 3
-url_districts = "X"
+import argparse
 
-URL_to_fill = f"https://ogloszenia.trojmiasto.pl/nieruchomosci-rynek-wtorny/gdansk/ai,_{url_price}," \
-              f"dw,{url_days}d," \
-              f"ri,{url_min_rooms}_," \
-              f"ti,_{url_max_floors}.html#Modal"
+parser = argparse.ArgumentParser()
+
+# -mp 600000 -d 3 -mf 6 -s 3
+parser.add_argument("-mp", "--max_price", help="Max price", type=int)
+parser.add_argument("-d", "--days_recency", help="Ad recency 1 or 3", type=int)
+parser.add_argument("-mf", "--max_floor", help="Max desired floor", type=int)
+parser.add_argument("-s", "--size", help="Min amount of rooms", type=int)
+
+args = parser.parse_args()
+
+# url to apartments in whole Gdansk
+URL_to_fill = (
+    f"https://ogloszenia.trojmiasto.pl/nieruchomosci-rynek-wtorny/gdansk/ai,_{args.max_price},"
+    f"dw,{args.days_recency}d,"
+    f"ri,{args.size}_,"
+    f"ti,_{args.max_floor}.html#Modal"
+)
 
 page = requests.get(URL_to_fill)
 soup = BeautifulSoup(page.content, "html.parser")
