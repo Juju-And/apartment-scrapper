@@ -1,3 +1,4 @@
+import datetime
 import json
 import re
 
@@ -17,18 +18,19 @@ def fetch_single_district():
     districts_dict = {}
     # district_list = city_district_list
     # print(district_list)
-    print(location_box)
+    # print(location_box)
     for city in location_box:
         district_list = city.find("ul").find_all("li")
         for idx, district in enumerate(district_list):
-            print(idx, district)
+            # print(idx, district)
             districts_dict.update(
                 {district.find("input")["id"]: re.sub("\n", "", district.text)}
             )
     # for idx, district in enumerate(scrapped_districts):
     #     print(idx, district)
     # print(location_box)
-    with open("districts.json", "w", encoding="utf8") as json_file:
+    with open("districts_fetcher/districts.json", "w", encoding="utf8") as json_file:
+        print(datetime.datetime.now(), 'File "districts.json" has been generated.')
         json.dump(districts_dict, json_file, ensure_ascii=False)
 
 

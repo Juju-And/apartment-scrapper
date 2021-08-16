@@ -45,5 +45,9 @@ With ready empty DB, and filled .env file you're ready to run and receive your f
 $ python main.py
 ```
 
+### Future functionality
+
+Selecting specific districts.
+
 
 
