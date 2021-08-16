@@ -5,7 +5,6 @@ import requests
 from bs4 import BeautifulSoup
 
 # url to apartments in whole Gdansk
-URL = "https://ogloszenia.trojmiasto.pl/nieruchomosci-rynek-wtorny/gdansk/ai,_600000,ti,_3.html"
 url_price = 600000
 url_days = 3
 url_max_floors = 6
@@ -14,7 +13,6 @@ url_districts = "X"
 
 URL_to_fill = f"https://ogloszenia.trojmiasto.pl/nieruchomosci-rynek-wtorny/gdansk/ai,_{url_price}," \
               f"dw,{url_days}d," \
-              f"e1i,{url_districts}," \
               f"ri,{url_min_rooms}_," \
               f"ti,_{url_max_floors}.html#Modal"
 
