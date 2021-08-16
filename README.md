@@ -32,6 +32,13 @@ RECIPIENT_MAIL=recipient@example.com
 
 Now you can replace URL address with preffered criteria in `apartments_fetcher.py`
 
+```
+url_price = 600000
+url_days = 3
+url_max_floors = 6
+url_min_rooms = 3
+```
+
 
 With ready empty DB, and filled .env file you're ready to run and receive your first email notifications:
 ```
