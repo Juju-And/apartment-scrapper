@@ -18,13 +18,13 @@ def fetch_single_district():
     # district_list = city_district_list
     # print(district_list)
     print(location_box)
-    # for city in location_box:
-    #     district_list = city.find("ul").find_all("li")
-    #     for idx, district in enumerate(district_list):
-    #         print(idx, district)
-    #         districts_dict.update(
-    #             {district.find("input")["id"]: re.sub("\n", "", district.text)}
-    #         )
+    for city in location_box:
+        district_list = city.find("ul").find_all("li")
+        for idx, district in enumerate(district_list):
+            print(idx, district)
+            districts_dict.update(
+                {district.find("input")["id"]: re.sub("\n", "", district.text)}
+            )
     # for idx, district in enumerate(scrapped_districts):
     #     print(idx, district)
     # print(location_box)
